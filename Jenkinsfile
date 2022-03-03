@@ -22,6 +22,8 @@ stage('Setting the variables values') {
          sh '''#!/bin/bash
                  ls
                  sudo -i
+                 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+                 
          '''
     }
 }
