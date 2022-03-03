@@ -44,7 +44,8 @@ spec:
         AZURE_CLIENT_SECRET= credentials('azureclientsecret')
         AZ_USERNAME=credentials('azusername')
         AZ_PASSWORD=credentials('azpassword')
-  */  }
+  */ temp = 'temp'  
+    }
     parameters {
        
         string(name: 'clustername', defaultValue: 'cmpaks', description: '')
