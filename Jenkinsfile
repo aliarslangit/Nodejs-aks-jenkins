@@ -37,7 +37,7 @@ spec:
 }
   }*/
    agent {
-    kubernetes {
+    Built-In Node {
       label 'jenkins-slave'
       defaultContainer 'jnlp'
       yaml """
