@@ -36,43 +36,7 @@ spec:
 """
 }
   }*/
-   agent {
-    any {
-      label 'UBUNTU'
-      defaultContainer 'jnlp'
-      yaml """
-apiVersion: v1
-kind: Pod
-metadata:
-labels:
-  component: ci
-spec:
-  # Use service account that can deploy to all namespaces
-  serviceAccountName: jenkins
-  containers:
-  - name: terraform
-    image: hashicorp/terraform:0.14.8
-    command:
-    - cat
-    tty: true
-  - name: kubectl
-    image: gcr.io/cloud-builders/kubectl
-    command:
-    - cat
-    tty: true
-  - name: helm-kubectl-azcli
-    image: aliarslandocker/azcli-helm-kubectl:V1 
-    command:
-    - cat
-    tty: true  
-  - name: checkov
-    image: bridgecrew/checkov
-    command:
-    - cat
-    tty: true
-"""
-}
-  } 
+   agent any
     environment {
         AZURE_SUBSCRIPTION_ID= credentials('azuresubid') 
         AZURE_TENANT_ID= credentials('azuretenantid')
