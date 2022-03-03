@@ -37,8 +37,8 @@ spec:
 }
   }*/
    agent {
-    build {
-      label 'jenkins-slave'
+    any {
+      label 'UBUNTU'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
