@@ -20,8 +20,7 @@ pipeline {
 stage('Setting the variables values') {
     steps {
          sh '''#!/bin/bash
-                 echo "hello world" 
-                 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+                 ls
          '''
     }
 }
