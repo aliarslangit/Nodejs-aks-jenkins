@@ -37,7 +37,7 @@ spec:
 }
   }*/
    agent {
-    Built-In Node {
+    build {
       label 'jenkins-slave'
       defaultContainer 'jnlp'
       yaml """
