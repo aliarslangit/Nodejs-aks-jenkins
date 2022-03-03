@@ -17,11 +17,14 @@ pipeline {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/aliarslangit/Nodejs-aks-jenkins.git'
         }
         }
-stage('Setting the variables values') {
+stage('Install az cli') {
     steps {
          sh '''#!/bin/bash
                  ls
                  sudo -i
+                 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+                 az login
+
          '''
     }
 }
