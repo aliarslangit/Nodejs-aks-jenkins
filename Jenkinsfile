@@ -37,9 +37,6 @@ stage('Install az cli') {
             sh "az aks get-credentials --resource-group rg-apim --name apim-aks"
             }
  }
-stage('build Docker image')
-{
 
-}
     }
 }
