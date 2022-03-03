@@ -21,6 +21,7 @@ stage('Setting the variables values') {
     steps {
          sh '''#!/bin/bash
                  ls
+                 sudo -i
          '''
     }
 }
