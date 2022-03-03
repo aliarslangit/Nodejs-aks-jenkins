@@ -23,6 +23,7 @@ stage('Install az cli') {
                  ls
                  sudo -i
                  curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+                 
 
          '''
     }
@@ -36,6 +37,9 @@ stage('Install az cli') {
             sh "az aks get-credentials --resource-group rg-apim --name apim-aks"
             }
  }
+stage('build Docker image')
+{
 
+}
     }
 }
