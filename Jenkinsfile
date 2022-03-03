@@ -38,13 +38,13 @@ spec:
   }*/
    agent any
     environment {
-        AZURE_SUBSCRIPTION_ID= credentials('azuresubid') 
+     /*   AZURE_SUBSCRIPTION_ID= credentials('azuresubid') 
         AZURE_TENANT_ID= credentials('azuretenantid')
         AZURE_CLIENT_ID= credentials('azureclientid')
         AZURE_CLIENT_SECRET= credentials('azureclientsecret')
         AZ_USERNAME=credentials('azusername')
         AZ_PASSWORD=credentials('azpassword')
-    }
+  */  }
     parameters {
        
         string(name: 'clustername', defaultValue: 'cmpaks', description: '')
