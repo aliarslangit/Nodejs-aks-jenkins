@@ -3,6 +3,9 @@ pipeline {
     
   environment {
         docker=credentials('docker')
+        registry = "aliarslanmushtaq/nodejs-microservice"
+        registryCredential = 'docker'
+        dockerImage = ''
     }
   
     parameters {
@@ -45,10 +48,20 @@ stage('Install az cli') {
      sh 'sudo docker build -t aliarslanmushtaq/nodejs-microservice . '
  }
  }
- stage('Push to Docker Registry'){
-    withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        pushToImage('nodejs-microservice', 'latest', USERNAME, PASSWORD)
-    }
-    }
+
+stage('Building our image') {
+steps{
+script {
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
+}
+}
+}
+//  stage('Push to Docker Registry'){
+//      steps{
+//     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+//         pushToImage('nodejs-microservice', 'latest', USERNAME, PASSWORD)
+//     }
+//     }
+// }
 }
 }
