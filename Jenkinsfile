@@ -61,7 +61,7 @@ stage('Install az cli') {
 
        stage('Push image') {
            steps{
-               sh 'sudo docker push aliarslanmushtaq/nodejs-microservice:'+$BUILD_NUMBER
+               sh 'sudo docker push aliarslanmushtaq/nodejs-microservice:' +"$BUILD_NUMBER"
                 }
        }
 }
