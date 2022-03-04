@@ -49,19 +49,13 @@ stage('Install az cli') {
  }
  }
 
-stage('Building our image') {
-steps{
-script {
-dockerImage = docker.build registry + ":$BUILD_NUMBER"
+
+ stage('Push to Docker Registry'){
+     steps{
+    withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        pushToImage('nodejs-microservice', 'latest', USERNAME, PASSWORD)
+    }
+    }
 }
-}
-}
-//  stage('Push to Docker Registry'){
-//      steps{
-//     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-//         pushToImage('nodejs-microservice', 'latest', USERNAME, PASSWORD)
-//     }
-//     }
-// }
 }
 }
