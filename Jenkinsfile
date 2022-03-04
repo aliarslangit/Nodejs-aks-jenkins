@@ -45,22 +45,23 @@ stage('Install az cli') {
  stage('Build Docker Image')
  {
      steps{
-    // sh 'sudo docker build -t aliarslanmushtaq/nodejs-microservice . '
-    script{
-     image = docker.build("nodejs-microservice:latest")   
-          }
+     sh 'sudo docker build -t aliarslanmushtaq/nodejs-microservice . '
+
  }
+ }
+ stage('Docker Login')
+ {
+     steps{
+         withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+  sh 'sudo docker login some.awesome.url -u $USERNAME -p $PASSWORD'
+         }
+}
+     }
  }
 
        stage('Push image') {
            steps{
-           script{
-       docker.withRegistry('https://aliarslanmushtaq.hub.docker.com', registryCredential) 
-       {                   
-             
-             image.push("latest")        
-        }  
-         } }
+ }
        }
 }
 }
