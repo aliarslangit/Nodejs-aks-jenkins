@@ -25,7 +25,7 @@ stage('Install az cli') {
                  curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
                  sudo apt install docker.io
                  sudo systemctl enable --now docker
-                 docker --version
+                 sudo docker --version
          '''
     }
 }
