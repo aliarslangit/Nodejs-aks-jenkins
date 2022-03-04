@@ -52,13 +52,14 @@ stage('Install az cli') {
  }
 
        stage('Push image') {
+           steps{
            script{
        docker.withRegistry('https://aliarslanmushtaq.hub.docker.com', registryCredential) 
        {                   
              
              image.push("latest")        
         }  
-         } 
+         } }
        }
 }
 }
