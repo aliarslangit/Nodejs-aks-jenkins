@@ -23,7 +23,7 @@ stage('Install az cli') {
                  ls
                  sudo -i
                  curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-                 sudo apt install docker.io
+                 sudo apt install docker.io -y
                  sudo systemctl enable --now docker
                  sudo docker --version
          '''
@@ -39,9 +39,9 @@ stage('Install az cli') {
             }
  }
 
- stage('Building Docker Image')
+ stage('Build Docker Image')
  {
-
+     sudo docker build -t nodejsapp .
  }
 
     }
