@@ -42,7 +42,7 @@ stage('Install az cli') {
  stage('Build Docker Image')
  {
      steps{
-     sudo docker build -t nodejsapp .
+     sh 'sudo docker build -t nodejsapp . '
  }
  }
     }
