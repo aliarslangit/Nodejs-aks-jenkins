@@ -46,8 +46,9 @@ stage('Install az cli') {
  {
      steps{
     // sh 'sudo docker build -t aliarslanmushtaq/nodejs-microservice . '
+    script{
      image = docker.build("aliarslanmushtaq/nodejs-microservice")   
- }
+ }}
  }
 
        stage('Push image') {
@@ -56,6 +57,6 @@ stage('Install az cli') {
              
              image.push("latest")        
               }    
-           }
+       }
 }
 }
