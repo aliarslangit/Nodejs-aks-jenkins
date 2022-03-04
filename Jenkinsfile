@@ -59,8 +59,4 @@ stage('Install az cli') {
      }
  }
 
-       stage('Push image') {
-           steps{
- }
-       }
 }
