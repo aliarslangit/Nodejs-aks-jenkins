@@ -46,9 +46,11 @@ stage('Install az cli') {
  }
  }
  stage('Push to Docker Registry'){
+     steps{
     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
         pushToImage('nodejs-microservice', 'latest', USERNAME, PASSWORD)
     }
     }
+}
 }
 }
