@@ -39,10 +39,7 @@ stage('Install az cli') {
             }
  }
 
- stage('Building Docker Image')
- {
-
- }
+ 
 
     }
 }
