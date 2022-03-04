@@ -53,10 +53,15 @@ stage('Install az cli') {
  {
      steps{
          withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-  sh 'sudo docker login some.awesome.url -u $USERNAME -p $PASSWORD'
+  sh 'sudo docker login  -u $USERNAME -p $PASSWORD'
          }
 }
      }
  }
 
+       stage('Push image') {
+           steps{
+               sh 'docker push aliarslanmushtaq/nodejs-microservice:latest'
+                }
+       }
 }
