@@ -2,7 +2,7 @@ pipeline {
    agent any
     
   environment {
-     temp = 'temp'  
+        docker=credentials('docker')
     }
   
     parameters {
@@ -41,8 +41,13 @@ stage('Install az cli') {
 
  stage('Build Docker Image')
  {
-     sudo docker build -t nodejsapp .
+     steps{
+     sh 'sudo docker build -t aliarslanmushtaq/nodejs-microservice . '
  }
-
+ }
+ stage('Push to Docker Registry'){
+    withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        pushToImage('nodejs-microservice', 'latest', USERNAME, PASSWORD)
+    }
     }
 }
