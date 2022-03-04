@@ -64,4 +64,3 @@ stage('Install az cli') {
  }
        }
 }
-}
