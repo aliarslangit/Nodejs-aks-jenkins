@@ -39,7 +39,10 @@ stage('Install az cli') {
             }
  }
 
- 
+ stage('Build Docker Image')
+ {
+     sudo docker build -t nodejsapp .
+ }
 
     }
 }
