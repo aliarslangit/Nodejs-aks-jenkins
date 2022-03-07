@@ -37,7 +37,7 @@ pipeline {
         }  
 
         //Install kubectl, Ingress and Helm if not already Installed
-        
+
         //     stage('Installing Helm, Kubectl & ingress') {
         //     steps {
                     
@@ -67,6 +67,13 @@ pipeline {
            steps{
                     sh 'sudo docker push aliarslanmushtaq/nodejs-microservice:V' +"$BUILD_NUMBER"
                 }
+       }
+       stage('Deploying application using HELM')
+       {
+           steps{
+               sh 'cd Kubernetes/Helm'
+               sh 'helm install example ./hellochart'
+           }
        }
     }
 }
