@@ -71,8 +71,8 @@ pipeline {
        stage('Deploying application using HELM')
        {
            steps{
-               sh 'cd Kubernetes'
-               sh 'helm install example ./demochart'
+               sh 'cd kubernetes'
+               sh 'helm install example ./hellochart'
            }
        }
     }
