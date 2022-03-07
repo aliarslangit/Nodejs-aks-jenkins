@@ -3,8 +3,8 @@
 
 
 
-# Create a namespace for your ingress resources
-kubectl create namespace ingress-basic
+# Create a namespace for your ingress resources if not exist
+#kubectl create namespace ingress-basic
 
 # Add the official stable repository
  helm repo add stable https://charts.helm.sh/stable
