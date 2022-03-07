@@ -35,7 +35,7 @@ pipeline {
                     sh "az aks get-credentials --resource-group rg-demo --name demo-aks"
                 }
         }  
-            stage('Installing Kubernetes and Azure Modules') {
+            stage('Installing Helm, Kubectl & ingress') {
             steps {
                     
                     sh 'bash scripts/helm.sh'
