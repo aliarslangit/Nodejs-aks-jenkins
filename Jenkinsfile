@@ -72,7 +72,7 @@ pipeline {
        {
            steps{
                sh 'cd Kubernetes'
-               sh 'helm install example ./helm'
+               sh 'helm install example ./hellochart'
            }
        }
     }
