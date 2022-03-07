@@ -22,7 +22,7 @@ pipeline {
         }
     stage('Installing Kubernetes and Azure Modules') {
             steps {
-                    sh 'bash scripts/packages.sh'
+                    
                     sh 'bash scripts/helm.sh'
                     sh 'bash scripts/ingress.sh'
                     sh 'bash scripts/kubectl.sh'
