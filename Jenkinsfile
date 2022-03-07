@@ -73,7 +73,7 @@ pipeline {
            steps{
             //    sh 'cd kubernetes'
                sh 'ls'
-               sh 'helm upgrade example ./kubernetes/hellochart'
+               sh 'helm install example ./kubernetes/hellochart'
            }
        }
     }
