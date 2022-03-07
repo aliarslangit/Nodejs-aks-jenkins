@@ -20,12 +20,8 @@ pipeline {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/aliarslangit/Nodejs-aks-jenkins.git'
         }
         }
-    stage('Installing Kubernetes and Azure Modules') {
+    stage('Installing Azure Modules') {
             steps {
-                    
-                    sh 'bash scripts/helm.sh'
-                //    sh 'bash scripts/ingress.sh'
-                    sh 'bash scripts/kubectl.sh'
                     sh 'bash scripts/azcli.sh'
                 }
         }
@@ -36,9 +32,18 @@ pipeline {
                     withCredentials([azureServicePrincipal('azcli')]) {
                     sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                     }
-                    sh "az aks get-credentials --resource-group rg-apim --name apim-aks"
+                    sh "az aks get-credentials --resource-group demo-aks --name rg-demo"
                 }
         }  
+            stage('Installing Kubernetes and Azure Modules') {
+            steps {
+                    
+                    sh 'bash scripts/helm.sh'
+                    sh 'bash scripts/kubectl.sh'
+                    sh 'bash scripts/ingress.sh'
+                    
+                }
+        }
 
     stage('Build Docker Image')
         {
