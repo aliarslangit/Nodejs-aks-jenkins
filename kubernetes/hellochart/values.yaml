@@ -1,1 +1,1 @@
-dockerimage: "aliarslanmushtaq/nodejs-microservice:latest"
+DockerImage: "aliarslanmushtaq/nodejs-microservice:latest"
