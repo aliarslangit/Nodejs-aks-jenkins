@@ -20,49 +20,45 @@ pipeline {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/aliarslangit/Nodejs-aks-jenkins.git'
         }
         }
-stage('Install az cli') {
-    steps {
-         sh '''#!/bin/bash
-                 ls
-                 sudo -i
-                 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-                 sudo apt install docker.io -y
-                 sudo systemctl enable --now docker
-                 sudo docker --version
-         '''
-    }
-}
-        stage('Connect to Aks') {
+    stage('Installing Kubernetes and Azure Modules') {
+            steps {
+                    sh 'bash scripts/packages.sh'
+                    sh 'bash scripts/helm.sh'
+                    sh 'bash scripts/ingress.sh'
+                    sh 'bash scripts/kubectl.sh'
+                }
+        }
+ 
+    stage('Connect to Aks') {
             steps {
     
                     withCredentials([azureServicePrincipal('azcli')]) {
                     sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                     }
-            sh "az aks get-credentials --resource-group rg-apim --name apim-aks"
-            }
- }
+                    sh "az aks get-credentials --resource-group rg-apim --name apim-aks"
+                }
+        }  
 
- stage('Build Docker Image')
- {
-     steps{
-     sh 'sudo docker build -t aliarslanmushtaq/nodejs-microservice:V'+"$BUILD_NUMBER"+ ' . '
+    stage('Build Docker Image')
+        {
+            steps{
+                    sh 'sudo docker build -t aliarslanmushtaq/nodejs-microservice:V'+"$BUILD_NUMBER"+ ' . '
+                 }
+        }
+    stage('Docker Login')
+        {
+            steps{
+                    withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh 'sudo docker login  -u $USERNAME -p $PASSWORD'
+                }
+        }
+        }
 
- }
- }
- stage('Docker Login')
- {
-     steps{
-         withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-  sh 'sudo docker login  -u $USERNAME -p $PASSWORD'
-         }
-}
-     }
- 
 
        stage('Push image') {
            steps{
-               sh 'sudo docker push aliarslanmushtaq/nodejs-microservice:V' +"$BUILD_NUMBER"
+                    sh 'sudo docker push aliarslanmushtaq/nodejs-microservice:V' +"$BUILD_NUMBER"
                 }
        }
-}
+    }
 }
