@@ -73,7 +73,7 @@ pipeline {
            steps{
             //    sh 'cd kubernetes'
                sh 'ls'
-               sh 'helm install ./kubernetes/hellochart --namespace ingress-basic'
+               sh 'helm install example ./kubernetes/hellochart --namespace ingress-basic'
            }
        }
     }
