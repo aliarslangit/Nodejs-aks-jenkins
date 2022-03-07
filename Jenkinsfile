@@ -35,15 +35,17 @@ pipeline {
                     sh "az aks get-credentials --resource-group rg-demo --name demo-aks"
                 }
         }  
-            stage('Installing Helm, Kubectl & ingress') {
-            steps {
+
+        //Install kubectl, Ingress and Helm if not already Installed
+        
+        //     stage('Installing Helm, Kubectl & ingress') {
+        //     steps {
                     
-                    sh 'bash scripts/helm.sh'
-                    sh 'bash scripts/kubectl.sh'
-                    sh 'bash scripts/ingress.sh'
-                    
-                }
-        }
+        //             sh 'bash scripts/helm.sh'
+        //             sh 'bash scripts/kubectl.sh'
+        //             sh 'bash scripts/ingress.sh'                  
+        //         }
+        // }
 
     stage('Build Docker Image')
         {
