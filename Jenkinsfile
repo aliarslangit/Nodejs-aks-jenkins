@@ -71,9 +71,9 @@ pipeline {
        stage('Deploying application using HELM')
        {
            steps{
-               sh 'cd kubernetes'
+            //    sh 'cd kubernetes'
                sh 'ls'
-               sh 'helm upgrade example ./hellochart'
+               sh 'helm upgrade example ./kubernetes/hellochart'
            }
        }
     }
