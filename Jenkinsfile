@@ -24,7 +24,7 @@ pipeline {
             steps {
                     
                     sh 'bash scripts/helm.sh'
-                    sh 'bash scripts/ingress.sh'
+                //    sh 'bash scripts/ingress.sh'
                     sh 'bash scripts/kubectl.sh'
                     sh 'bash scripts/azcli.sh'
                 }
