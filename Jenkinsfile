@@ -38,14 +38,14 @@ pipeline {
 
         //Install kubectl, Ingress and Helm if not already Installed
 
-        //     stage('Installing Helm, Kubectl & ingress') {
-        //     steps {
+            stage('Installing Helm, Kubectl & ingress') {
+             steps {
                     
         //             sh 'bash scripts/helm.sh'
         //             sh 'bash scripts/kubectl.sh'
                      sh 'bash scripts/ingress.sh'                  
-        //         }
-        // }
+                }
+         }
 
     stage('Build Docker Image')
         {
