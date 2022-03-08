@@ -71,9 +71,9 @@ pipeline {
        stage('Deploying application using HELM')
        {
            steps{
-               sh 'kubectl apply -f ./kubernetes/hellochart/templates/deployment.yaml --ingress-basic'
-               sh 'kubectl apply -f ./kubernetes/hellochart/templates/service.yaml --ingress-basic'
-               sh 'kubectl apply -f ./kubernetes/hellochart/templates/ingress.yaml --ingress-basic'
+               sh 'kubectl apply -f ./kubernetes/hellochart/templates/deployment.yaml --namespace ingress-basic'
+               sh 'kubectl apply -f ./kubernetes/hellochart/templates/service.yaml --namespace ingress-basic'
+               sh 'kubectl apply -f ./kubernetes/hellochart/templates/ingress.yaml --namespace ingress-basic'
                //sh 'helm install example ./kubernetes/hellochart --namespace ingress-basic'
            }
        }
