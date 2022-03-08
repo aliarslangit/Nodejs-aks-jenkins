@@ -68,7 +68,7 @@ pipeline {
                     sh 'sudo docker push aliarslanmushtaq/nodejs-microservice:V' +"$BUILD_NUMBER"
                 }
        }
-       stage('Deploying application using HELM')
+       stage('Deploying application')
        {
            steps{
                sh 'kubectl apply -f ./kubernetes/hellochart/templates/deployment.yaml --namespace ingress-basic'
