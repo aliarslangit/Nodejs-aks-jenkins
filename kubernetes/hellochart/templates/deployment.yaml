@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: demoapp
-          image: { { .Values.DockerImage } }
+          #image: { { .Values.DockerImage } }
+          image: aliarslanmushtaq/nodejs-microservice
           ports:
             - containerPort: 3000
