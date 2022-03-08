@@ -41,9 +41,9 @@ pipeline {
             stage('Installing Helm, Kubectl & ingress') {
              steps {
                     
-        //             sh 'bash scripts/helm.sh'
-        //             sh 'bash scripts/kubectl.sh'
-                     sh 'bash scripts/ingress.sh'                  
+                    sh 'bash scripts/helm.sh'
+                    sh 'bash scripts/kubectl.sh'
+                    sh 'bash scripts/ingress.sh'                  
                 }
          }
 
